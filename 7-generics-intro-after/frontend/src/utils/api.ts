@@ -1,14 +1,13 @@
 import axios from "axios";
-import Post from "../models/Post";
 
-export async function getPosts() {
-  const res = await axios.get<Post[]>("http://localhost:6060/posts");
+export async function getRequest<T>(relativeUrl: string): Promise<T[]> {
+  const res = await axios.get<T[]>(`http://localhost:6060/${relativeUrl}`);
   if (res.status === 200) {
     return res.data;
   } else {
     return [];
   }
 }
-export async function postPost(post: Post) {
-  await axios.post<Post>("http://localhost:6060/posts", post);
+export async function postRequest<T>(data: T, relativeUrl: string) {
+  await axios.post<T>(`http://localhost:6060/${relativeUrl}`, data);
 }

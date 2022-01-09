@@ -23,14 +23,14 @@ function App() {
 
   useEffect(() => {
     setPosts([{
-      id: posts.length + 1,
+      id: 1,
       sender: {
-        id: posts.length + 1,
+        id: 1,
         name: "Ramón",
         handle: "hola_soy_milk",
       },
       body: "Eres genial!",
-      timestamp: new Date,
+      timestamp: new Date(),
     }]);
   }, []);
 

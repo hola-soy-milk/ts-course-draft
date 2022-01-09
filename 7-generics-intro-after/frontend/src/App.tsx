@@ -3,17 +3,17 @@ import './App.css';
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 import Post from './models/Post';
-import { getPosts, postPost } from './utils/api';
+import { getRequest, postRequest } from './utils/api';
 
 function App() {
   const [posts, setPosts] = useState<Post[]>([]);
 
   async function fetchPosts() {
-    setPosts(await getPosts());
+    setPosts(await getRequest<Post>("posts"));
   }
 
   async function submitPost(post: Post) {
-    await postPost(post);
+    await postRequest<Post>(post, "posts");
     fetchPosts();
   }
 
@@ -23,14 +23,14 @@ function App() {
 
   useEffect(() => {
     setPosts([{
-      id: posts.length + 1,
+      id: 1,
       sender: {
-        id: posts.length + 1,
+        id: 1,
         name: "Ramón",
         handle: "hola_soy_milk",
       },
       body: "Eres genial!",
-      timestamp: new Date,
+      timestamp: new Date(),
     }]);
   }, []);
 
