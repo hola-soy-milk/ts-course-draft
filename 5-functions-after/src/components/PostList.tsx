@@ -9,7 +9,7 @@ interface Props {
 function PostList(props: Props) {
   let {posts} = props;
 
-  let rows = posts.map((post, index) => {
+  let rows = posts.map((post: Post, index: number) => {
     return <div className="card" key={index}>
       <p className="small">{ post.name } <span className="muted">@{post.handle}</span></p>
       <p className="">{ post.body }</p>

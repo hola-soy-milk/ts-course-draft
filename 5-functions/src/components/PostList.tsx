@@ -2,11 +2,7 @@ import React from 'react';
 import Post from '../models/Post';
 import {formatPostTimestamp} from '../utils/formatters'
 
-interface Props {
-  posts: Post[]
-}
-
-function PostList(props: Props) {
+function PostList(props) {
   let {posts} = props;
 
   let rows = posts.map((post, index) => {
