@@ -2,7 +2,7 @@ import axios from "axios";
 import Post from "../models/Post";
 
 export async function getPosts() {
-  const res = await axios.get("http://localhost:6060/posts");
+  const res = await axios.get<Post[]>("http://localhost:6060/posts");
   if (res.status === 200) {
     return res.data;
   } else {
@@ -10,5 +10,5 @@ export async function getPosts() {
   }
 }
 export async function postPost(post: Post) {
-  await axios.post("http://localhost:6060/posts", post);
+  await axios.post<Post>("http://localhost:6060/posts", post);
 }
