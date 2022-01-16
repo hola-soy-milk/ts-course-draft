@@ -1,5 +1,5 @@
 export default class DieWrapper {
-  die?: Die;
+  die: Die;
   sides: number;
 
   constructor(sides: number = 6) {
@@ -9,13 +9,10 @@ export default class DieWrapper {
   }
 
   value(): number {
-    if (this.die instanceof Die) {
-      return this.die.value();
-    }
-    return 0;
+    return this.die.value();
   }
 
-  private dieForValue(value: number): Die | undefined {
+  private dieForValue(value: number): Die {
     switch (value) {
       case 1:
         return new OneDie();
@@ -34,7 +31,7 @@ export default class DieWrapper {
       case 8:
         return new EightDie();
       default:
-        return undefined;
+        return new OneDie();
     }
   }
 }
