@@ -6,5 +6,10 @@
   "compilerOptions": {
     "noImplicitAny": true,
     "strictNullChecks": true,
+    "strictFunctionTypes": false,
+    "strictBindCallApply": false,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false
   }
 }
