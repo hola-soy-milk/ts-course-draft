@@ -4,7 +4,7 @@
 </script>
 
 {#each availableMarshmallows as marshmallow}
-    <button on:click={(e) => addCartItem(marshmallow)}>
+    <button on:click={(_e) => addCartItem(marshmallow)}>
         {marshmallow.name()}<br>${marshmallow.priceCents() / 100.0}
     </button>
 {/each}
