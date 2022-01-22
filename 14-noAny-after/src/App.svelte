@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Cart from './components/Cart.svelte';
 	import Menu from './components/Menu.svelte'
-	import ShoppingCart from './models/ShoppingCart'
+	import type { Marshmallow } from './models/Marshmallow';
+	import { ShoppingCart } from './models/ShoppingCart'
 	let cart = new ShoppingCart;
 
-	const addCartItem = (item: any) => {
+	const addCartItem = (item: Marshmallow) => {
 		cart = cart.addItem(item);
 	}
   </script>

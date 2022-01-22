@@ -1,14 +1,4 @@
-import { Marshmallow } from '../Marshmallow';
-import { ShoppingCart } from '../ShoppingCart'
-
-class Big extends Marshmallow {
-    priceCents() {
-        return 999;
-    }
-    name() {
-        return "Big";
-    }
-}
+import ShoppingCart from '../ShoppingCart'
 
 test("New cart has no items and 0 total", () => {
   const cart = new ShoppingCart();
@@ -18,17 +8,16 @@ test("New cart has no items and 0 total", () => {
 
 test("Adding item to cart successfully", () => {
   const cart = new ShoppingCart();
-  const bigMarshmallow = new Big()
-  const updatedCart = cart.addItem(bigMarshmallow);
-  expect(Object.getPrototypeOf(updatedCart.items![0].constructor).name).toEqual(Marshmallow.name);
-  expect(updatedCart.items).toEqual([bigMarshmallow]);
+  const updatedCart = cart.addItem({data: "value"});
+  expect(updatedCart.items).toEqual([{
+    data: "value"
+  }]);
 });
 
 test("Cart with item adds to total", () => {
   const cart = new ShoppingCart();
   cart.addItem({
-    priceCents: () => 100,
-    name: () => "Big marshmallow"
+    priceCents: () => 100
   });
   expect(cart.total()).toBe(100);
 });

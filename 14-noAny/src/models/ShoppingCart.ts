@@ -1,19 +1,11 @@
-import type { Marshmallow } from "./Marshmallow";
-
-export interface GroupedCartItem {
-    name: string,
-    priceCents: number,
-    quantity: number
-}
-
-export class ShoppingCart {
-    items?: Marshmallow[];
+export default class ShoppingCart {
+    items?: any[];
 
     constructor() {
         this.items = [];
     }
 
-    addItem(item: Marshmallow) {
+    addItem(item: any) {
         if (this.items !== undefined) {
             this.items = [...this.items, item]
         }
@@ -22,20 +14,16 @@ export class ShoppingCart {
 
     groupedItems() {
         if (this.items) {
-            return this.items.reduce((cartItems: GroupedCartItem[], item: Marshmallow) => {
-                let cartItem: GroupedCartItem | undefined = cartItems.find(e => e.name === item.name());
-                if (!cartItem) {
-                    cartItem = {
-                      name: item.name(),
-                      priceCents: item.priceCents(),
-                      quantity: 0,
-                    };
-                    cartItems.push(cartItem);
-                }
-                cartItem.quantity += 1;
-                cartItem.priceCents += item.priceCents();
-                return cartItems;
-            }, []);
+            return Object.values(this.items.reduce((cartItem, item) => {
+                cartItem[item.name()] = cartItem[item.name()] || {
+                    name: item.name(),
+                    quantity: 0,
+                    priceCents: item.priceCents()
+                };
+                cartItem[item.name()].quantity += 1;
+                cartItem[item.name()].priceCents += item.priceCents();
+                return cartItem;
+            }, {}));
         } else {
             return [];
         }

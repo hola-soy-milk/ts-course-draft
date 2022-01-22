@@ -1,7 +1,9 @@
 <script lang="ts">
-  export let items: any[];
-  export let amount: any;
-  export let total: any;
+  import type { GroupedCartItem } from "../models/ShoppingCart";
+
+  export let items: GroupedCartItem[];
+  export let amount: number;
+  export let total: number;
 </script>
 
 {#if items.length}
