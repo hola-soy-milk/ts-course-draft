@@ -3,7 +3,7 @@
 	import Menu from './components/Menu.svelte'
 	import type { Marshmallow } from './models/Marshmallow';
 	import { ShoppingCart } from './models/ShoppingCart'
-	let cart = new ShoppingCart;
+	let cart = new ShoppingCart<Marshmallow>();
 
 	const addCartItem = (item: Marshmallow) => {
 		cart = cart.addItem(item);

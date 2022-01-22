@@ -1,7 +1,6 @@
-export abstract class Marshmallow {
-    abstract priceCents(): number;
-    abstract name(): string;
-}
+import CartItemType from "./CartItemType";
+
+export abstract class Marshmallow extends CartItemType {}
 
 class Fluffy extends Marshmallow {
     priceCents() {

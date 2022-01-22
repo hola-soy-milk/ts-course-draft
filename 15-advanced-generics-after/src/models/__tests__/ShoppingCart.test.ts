@@ -11,13 +11,13 @@ class Big extends Marshmallow {
 }
 
 test("New cart has no items and 0 total", () => {
-  const cart = new ShoppingCart();
+  const cart = new ShoppingCart<Marshmallow>();
   expect(cart.total()).toBe(0);
   expect(cart.items).toEqual([]);
 });
 
 test("Adding item to cart successfully", () => {
-  const cart = new ShoppingCart();
+  const cart = new ShoppingCart<Marshmallow>();
   const bigMarshmallow = new Big()
   const updatedCart = cart.addItem(bigMarshmallow);
   expect(Object.getPrototypeOf(updatedCart.items![0].constructor).name).toEqual(Marshmallow.name);
@@ -25,7 +25,7 @@ test("Adding item to cart successfully", () => {
 });
 
 test("Cart with item adds to total", () => {
-  const cart = new ShoppingCart();
+  const cart = new ShoppingCart<Marshmallow>();
   cart.addItem({
     priceCents: () => 100,
     name: () => "Big marshmallow"
