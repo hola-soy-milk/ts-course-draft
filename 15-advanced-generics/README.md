@@ -1,5 +1,13 @@
 Objetivo: Eliminar el uso del tipo Marshmallow del ShoppingCart
 
+Verificar: 
+
+```
+    $ npm run test
+    $ npm run check
+    $ npm run lint
+```
+
 Agregar `./src/models/CartItemType.ts`:
 
 ```

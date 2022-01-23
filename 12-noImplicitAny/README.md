@@ -1,5 +1,13 @@
 Objetivo: Resolver el error "no implicit any's allowed"
 
+Verificar: 
+
+```
+    $ npm run test
+    $ npm run check
+    $ npm run lint
+```
+
 En `./src/models/ShoppingCart.ts`:
 
 ```

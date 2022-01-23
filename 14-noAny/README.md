@@ -1,5 +1,13 @@
 Objetivo: Ultilizar tipos estrictamente
 
+Verificar: 
+
+```
+    $ npm run test
+    $ npm run check
+    $ npm run lint
+```
+
 En `./src/App.svelte`:
 
 ```
