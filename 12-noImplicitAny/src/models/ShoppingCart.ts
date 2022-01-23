@@ -13,7 +13,7 @@ export default class ShoppingCart {
     }
 
     groupedItems() {
-        return this.items.reduce((cartItem, item) => {
+        return Object.values(this.items.reduce((cartItem, item) => {
             cartItem[item.name()] = cartItem[item.name()] || {
                 name: item.name(),
                 quantity: 0,
@@ -22,7 +22,7 @@ export default class ShoppingCart {
             cartItem[item.name()].quantity += 1;
             cartItem[item.name()].priceCents += item.priceCents();
             return cartItem;
-        }, {});
+        }, {}));
     }
 
     numberOfItems() {
@@ -30,10 +30,6 @@ export default class ShoppingCart {
     }
 
     total() {
-        if (this.items) {
-            return this.items.reduce((x, y) => x + y.priceCents(), 0);
-        } else {
-            return 0;
-        }
+        return this.items.reduce((x, y) => x + y.priceCents(), 0);
     }
 }
