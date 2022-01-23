@@ -4,7 +4,7 @@
 import { ref } from 'vue'
 import DieWrapper from './types/Dice'
 import Die from './components/Die.vue'
-const roll = () => Array.from({length: 4}, () => new DieWrapper());
+const roll = () => Array.from({length: 4}, () => new DieWrapper(6));
 const dice = ref(roll());
 </script>
 
