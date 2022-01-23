@@ -13,20 +13,16 @@ export default class ShoppingCart {
     }
 
     groupedItems() {
-        if (this.items) {
-            return Object.values(this.items.reduce((cartItem, item) => {
-                cartItem[item.name()] = cartItem[item.name()] || {
-                    name: item.name(),
-                    quantity: 0,
-                    priceCents: item.priceCents()
-                };
-                cartItem[item.name()].quantity += 1;
-                cartItem[item.name()].priceCents += item.priceCents();
-                return cartItem;
-            }, {}));
-        } else {
-            return [];
-        }
+        return Object.values(this.items.reduce((cartItem, item) => {
+            cartItem[item.name()] = cartItem[item.name()] || {
+                name: item.name(),
+                quantity: 0,
+                priceCents: item.priceCents()
+            };
+            cartItem[item.name()].quantity += 1;
+            cartItem[item.name()].priceCents += item.priceCents();
+            return cartItem;
+        }, {}));
     }
 
     numberOfItems() {
