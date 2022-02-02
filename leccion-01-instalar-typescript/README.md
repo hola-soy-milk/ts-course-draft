@@ -18,6 +18,8 @@ Fué creada con [`create-react-app`](https://create-react-app.dev/) una herramie
 
 En este ejercicio, vamos a instalar TypeScript en nuestro proyecto usando `npm`.
 
+> Es importante tener en cuenta de a pesar de que podemos autogenerar una aplicación con TypeScript, el propósito aqui es añadirselo a una existente.
+
 Tras instalar los paquetes, echa a andar la aplicación con el siguente comando:
 
         $ npm run dev
