@@ -1,3 +1,17 @@
+# Unidad 1, Lección 2: Renombrar archivos JavaScript a TypeScript
+
+Ahora que instalamos TypeScript, ¡es hora de empezar a usarlo!
+
+TypeScript 
+
+## 🥅 Metas
+
+## 🤔 Reflexiones
+
+- Instalamos TypeScript, ¿pero lo estamos usando?
+- ¿Por qué tantos paquetes de `npm`?
+
+
 Objectivo: Configurar archivos de TypeScript
 
 Renombrar archivos a `.tsx` o a `.ts`:
