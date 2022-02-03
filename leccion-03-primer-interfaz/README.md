@@ -1,4 +1,4 @@
-# Unidad 1, Lección 3: Primer Interfaz
+# Unidad 1, Lección 3: Primera Interfaz
 
 Y ahora, ¡empezemos a escribir TypeScript!
 
