@@ -84,49 +84,46 @@ En esta lección vamos a declarar y ultilizar nuestra primera interfaz.
 
 ## 🤸 Ejercicios
 
-### 1. Renombrar archivos `.js` a `.ts`
+### 1. Un nuevo tipo
 
-Debido a que TypeScript es un superconjunto de JavaScript, no nos afectará cambiar las extensiones de los archivos.
+En `./src/App.tsx` veremos que importamos un nuevo archivo en la línea 5:
 
-### 2. Renombrar archivos `.jsx` a `.tsx`
-
-Si no conoces `JSX`, ¡no te preocupes! Son archivos especiales que se usan a menudo con React. No es requisito conocer JSX para este curso. 
-
-> ¡Por cierto, recomiendo el [curso de Matías para aprender React](https://www.escuelafrontend.com/react)!
-
-### 3. Generar `tsconfig.json`
-
-Al instalar el paquete de TypeScript, nos da acceso a la herramienta CLI `tsc`. La podemos usar para generar el archivo de configuración:
-
-    $ ./node_modules/.bin/tsc --init
-    
-Este creará el archivo `tsconfig.json`. Cambiémoslo para que el modo estricto no esté activado. En la línea 77:
-
-```json
-    "strict": false, 
+```typescript
+import Post from './types/Post';
 ```
 
-Nuestra última tarea será activar el modo react para la configuración. Agreguemos esta linea dentro de `"compilerOptions"`:
+¡Nuestro primer paso será crear este nuevo archivo `./src/types/Post.ts`!
 
-```json
-    "jsx": "react",
+### 2. Exportar nuestra interfaz `Post`
+
+Igual que con modulos ES6, con TypeScript podemos exportar definiciones, incluyendo interfaces.
+
+Exportemos una interfaz llamada Post, con las siguentes propiedades:
+
+- `id`: El número de identificación del `Post`
+- `name`: El nombre del usuario
+- `handle`: El apodo del usuario
+- `timestamp`: La hora y fecha en que se creó el `Post`
+
+### Crédito extra: Tipos para las propiedades
+
+Bueno ahora que ya tenemos nuestra interfaz con sus propiedades, ¿por qué no le agregamos definiciones de tipos a sus propiedades?
+
+Echémosle un vistazo a `./src/App.tsx`, en la línea 23:
+
+```typescript
+setPosts([{
+    id: posts.length + 1,
+    name: "Ramón",
+    handle: "hola_soy_milk",
+    body: "Eres genial!",
+    timestamp: new Date,
+}]);
 ```
+
+Esto nos ayuda a deducir que tipos tendrán las propiedades. 🤔
 
 ## 🤔 Reflexiones
 
-- ¿Cómo es que podemos agarrar JS existente y usarlo en archivos TS? 
-- ¿Qué pasa si cambiamos el modo estricto de vuelta a `true`?
+- ¿Por qué es que podemos declarar las propiedades del interfaz sín añadirles tipos?
 
-
-Objectivo: Agregar primera interfaz.
-
-Nuevo archivo: src/models/Post.ts
-```
-export default interface Post {
-  id: number;
-  name: string;
-  handle: string;
-  body: string;
-  timestamp: Date;
-}
-```
