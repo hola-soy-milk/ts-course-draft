@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
-import Post from './models/Post';
+import Post from './types/Post';
 
 function App() {
   const [posts, setPosts] = useState<Post[]>([]);
