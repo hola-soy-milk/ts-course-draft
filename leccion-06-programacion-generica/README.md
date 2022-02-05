@@ -42,15 +42,40 @@ Pero esto no:
 
 Con el uso de genéricos, podemos asegurarnos que los dos argumentos tendrán el mismo tipo.
 
+## ¿Que ha cambiado en esta lección?
+
+¡Quizas el cambio más grande es que nuestra aplicación ahora tiene un backend!
+
+Enfoquémosnos en el frontend, como siempre:
+
+Ubica el nuevo archivo `./frontend/src/utils/api.ts`:
+
+```typescript
+import axios from "axios";
+import Post from "../types/Post";
+
+export async function getPosts() {
+  const res = await axios.get("http://localhost:6060/posts");
+  if (res.status === 200) {
+    return res.data;
+  } else {
+    return [];
+  }
+}
+export async function postPost(post: Post) {
+  await axios.post("http://localhost:6060/posts", post);
+}
+```
+
+Este nos permite pedir y mandar posts del servidor.
+
 ## 🥅 Metas
 
-En esta lección, vamos a:
-- Crear una nueva interfaz llamada `Sender`
-- Integrarla en un `Post`
+En esta lección, vamos a reemplazar las funciones del módulo `api` con genéricos.
 
 ## 🤸 Ejercicios
 
-### 1. Nueva interfaz para `Sender`
+### 1. Renombrar funciónes
 
 Crea un nuevo archivo `./src/types/Sender.ts` y exporta una nueva interfaz Sender con 3 propiedades.
 
