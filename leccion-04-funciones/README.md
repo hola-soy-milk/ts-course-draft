@@ -63,7 +63,6 @@ Agreguemos en el nuevo archivo `./src/utils/formatters.ts`. Tendrá una función
 - Toma como argumento un `post` de tipo `Post`
 - Retorna un `Date` formatteado: `return new Date(post.timestamp).toLocaleString("es");`
 
-
 ### 3. Darle tipos a los argumentos de la función anónima
 
 Volvamos a `./src/components/PostList.tsx`, donde encontraremos una función anónima en la linea 7:
@@ -86,4 +85,4 @@ Extraigamos un interfaz local para los `Props` que tengan como propediad un arre
 
 ## 🤔 Reflexiones
 
-- ¿Por qué es que podemos declarar las propiedades del interfaz sín añadirles tipos?
+- ¿Qué tipo de retorno tendrá `formatPostTimestamp`?
