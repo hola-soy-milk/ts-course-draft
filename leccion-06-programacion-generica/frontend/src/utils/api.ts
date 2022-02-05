@@ -1,5 +1,5 @@
 import axios from "axios";
-import Post from "../models/Post";
+import Post from "../types/Post";
 
 export async function getPosts() {
   const res = await axios.get("http://localhost:6060/posts");

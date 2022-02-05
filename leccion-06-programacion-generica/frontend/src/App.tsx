@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
-import Post from './models/Post';
+import Post from './types/Post';
 import { getRequest, postRequest } from './utils/api';
 
 function App() {
