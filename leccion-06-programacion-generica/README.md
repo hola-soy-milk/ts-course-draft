@@ -1,3 +1,74 @@
+# Unidad 1, Lección 6: Usando genéricos
+
+En esta lección nos encontramos con el próximo concepto más grande que introduce TypeScript, genéricos.
+
+## 🐾 Primeros Pasos
+
+### ¿Qué son genéricos?
+
+Si has leido o visto ejemplos de TypeScript, seguro que has visto el tipo `T`. Este se llama un genérico. Nos permite definir funciones, clases u otras que funcionan con cualquier tipo. Por ejemplo:
+
+```typescript
+function generico<T>(elem: T): string {
+    return typeof elem;
+}
+```
+
+Y bueno, seguro que estaremos pensando, ¿no podemos usar un tipo `any`? ¡Sí, se puede!
+
+```typescript
+function generico(elem: any): string {
+    return typeof elem;
+}
+```
+
+Pero propongamos un ejemplo donde los tipos de varios argumentos pueden ser cualquiera, pero los mismos:
+
+```
+function generico<T>(elem1: T, elem2: T): void {
+    console.log(elem1, elem2);
+}
+```
+
+Con esta función, invocar los siguentes funcionan sin problema:
+- `generico(1, 2);`
+- `generico("perro", "gato");`
+- `generico(true, false);`
+
+Pero esto no:
+- `generico(1, '2');`
+- `generico("perro", 4);`
+- `generico(true, 'false');`
+
+Con el uso de genéricos, podemos asegurarnos que los dos argumentos tendrán el mismo tipo.
+
+## 🥅 Metas
+
+En esta lección, vamos a:
+- Crear una nueva interfaz llamada `Sender`
+- Integrarla en un `Post`
+
+## 🤸 Ejercicios
+
+### 1. Nueva interfaz para `Sender`
+
+Crea un nuevo archivo `./src/types/Sender.ts` y exporta una nueva interfaz Sender con 3 propiedades.
+
+🤔 ¿Cuales son?
+
+### 2. Integra el `Sender` en el `Post`
+
+Volvamos a `./src/types/Post.ts`, donde integraremos una propiedad `sender` que reemplazará `name` y `handle`.
+
+### Crédito extra: Prop Types
+
+Ahora mismo las propiedades del `Sender` son `any` de manera implícita. Qué tipos tendrán?
+
+## 🤔 Reflexiones
+
+- ¿Podemos combinar clases de JavaScript con interfaces?
+
+
 Objetivo: Comenzar a usar tipos genericos.
 
 En `./src/utils/api.ts`:
