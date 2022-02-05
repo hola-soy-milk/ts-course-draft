@@ -78,7 +78,7 @@ let rows = posts.map((post, index) => {
 En la línea 5, definimos nuestro componente con propiedades como un objeto:
 
 ```typescript
-function PostList({posts) {
+function PostList({posts}) {
 ```
 
 Extraigamos un interfaz local para los `Props` que tengan como propediad un arreglo de `posts`.
