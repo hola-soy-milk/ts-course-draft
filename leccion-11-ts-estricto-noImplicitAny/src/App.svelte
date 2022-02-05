@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Cart from './components/Cart.svelte';
 	import Menu from './components/Menu.svelte'
-	import ShoppingCart from './models/ShoppingCart'
+	import ShoppingCart from './types/ShoppingCart'
 	let cart = new ShoppingCart;
 
 	const addCartItem = (item) => {

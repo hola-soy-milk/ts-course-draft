@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {availableMarshmallows} from '../models/Marshmallow';
+  import {availableMarshmallows} from '../types/Marshmallow';
   export let addCartItem: any;
 </script>
 

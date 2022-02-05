@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { GroupedCartItem } from "../models/ShoppingCart";
+  import type { GroupedCartItem } from "../types/ShoppingCart";
 
   export let items: GroupedCartItem[];
   export let amount: number;

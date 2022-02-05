@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Cart from './components/Cart.svelte';
 	import Menu from './components/Menu.svelte'
-	import type { Marshmallow } from './models/Marshmallow';
-	import { ShoppingCart } from './models/ShoppingCart'
+	import type { Marshmallow } from './types/Marshmallow';
+	import { ShoppingCart } from './types/ShoppingCart'
 	let cart = new ShoppingCart;
 
 	const addCartItem = (item: any) => {
