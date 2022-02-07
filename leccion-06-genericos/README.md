@@ -109,8 +109,6 @@ En `./frontend/src/utils/api.ts`, cambiemos los nombres y firmas de las funcione
 
 Tambíen tendrás que modificar las funcones para que usen el `resourceURL`. 
 
-🤔 ¿Cuales son?
-
 ### 2. Integra el `Sender` en el `Post`
 
 Volvamos a `./src/types/Post.ts`, donde integraremos una propiedad `sender` que reemplazará `name` y `handle`.
