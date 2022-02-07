@@ -19,6 +19,23 @@ Igual que en la primera unidad, puedes echar a andar al app con los siguientes c
     
 Sin embargo, al tratar de abrir `http://localhost:3000`, ¡verás que nuestra app no funciona!
 
+En `./src/App.vue`, en las lineas 6-8, podemos ver que inicializamos nuestro estado con cuatro instancias de `DieWrapper`s:
+
+```typescript
+import DieWrapper from './types/Dice'
+const roll = () => Array.from({length: 4}, () => new DieWrapper());
+const dice = ref(roll());
+```
+
+Y en la línea 14, vemos que un `DieWrapper` tiene una función `value()`:
+
+```vue
+   <Die v-for="die in dice" :faceValue="die.value()"/>
+```
+
+Sin embargo, si miramos en `./src/types/Dice.ts`, ¡vemos que está vacio!
+
+## 🥅 Metas
 
 Objetivo: Usar clases de TypeScript.
 
