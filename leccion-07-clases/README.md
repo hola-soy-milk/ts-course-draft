@@ -35,7 +35,33 @@ Y en la línea 14, vemos que un `DieWrapper` tiene una función `value()`:
 
 Sin embargo, si miramos en `./src/types/Dice.ts`, ¡vemos que está vacio!
 
+### ¿Cómo se ven las clases en TypeScript?
+
+Casi igual que en JavaScript:
+
+```typescript
+
+class Perro {
+    nombre: string;
+    
+    constructor(nombre) {
+        this.nombre = nombre;
+    }
+    
+    ladrar() {
+        console.log("¡Guau guau!"
+    }
+}
+```
+
 ## 🥅 Metas
+
+En esta lección vamos a declarar y ultilizar nuestra primera clase con TypeScript. Verémos que son muy similares a las de JavaScript.
+
+## 🤸 Ejercicios
+
+### 1. La clase `DiceWrapper`
+
 
 Objetivo: Usar clases de TypeScript.
 
