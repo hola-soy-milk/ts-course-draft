@@ -54,7 +54,40 @@ class Perro {
 }
 ```
 
-Agreguémosle una propiedad a `DiceWrapper` llamada `sides` que será del tipo `number`. 
+Agreguémosle una propiedad a `DiceWrapper` llamada `sides` que será del tipo `number`.
+
+### 2. Adaptar la función `value`
+
+El la lección anterior habíamos programado nuestro `DiceWrapper` a que tirase un numero entre 1 y 6 al azar en `value`. Ahora lo vamos a adaptar a ser entre 1 y el número de lados usando la palabra clave `this`.
+
+### Crédito extra: Propiedad privada
+
+En clases de TypeScript, podemos tener propiedades públicas y privadas usando las palabras claves `public` y `private. Volvámos a nuestro ejemplo de la clase `Perro`:
+
+```typescript
+class Perro {
+   nombre: string;
+   
+   constructor(nombre: string) {
+      this.nombre = nombre;
+   }
+}
+```
+
+Cambiémosla para que nombre sea una propiedad pública:
+
+```typescript
+class Perro {
+   constructor(public nombre: string) {}
+}
+```
+
+Este es equivalente al anterior. 
+
+¡Se puede hacer con elementos privados tambien! 
+
+Tratemos de cambiar la propiedad `sides` de la clase `DiceWrapper` a ser privada.
+
 ## 🤔 Reflexiones
 
-- ¿Que tipo de retorno tendrá `value()`?
+- ¿Qué beneficio hay en que una propiedad sea pública?
