@@ -70,34 +70,56 @@ class Perro extends Animal {
 
 ## ¿Que ha cambiado en esta lección?
 
-¡Quizas el cambio más grande es que nuestra aplicación ahora tiene un backend!
-
-Enfoquémosnos en el frontend, como siempre:
-
-Ubica el nuevo archivo `./frontend/src/utils/api.ts`:
+¡Ha cambiado bastante el archivo `./src/types/Dice.ts`! En la línea 2, encontrarás una nueva propiedad:
 
 ```typescript
-import axios from "axios";
-import Post from "../types/Post";
-
-export async function getPosts() {
-  const res = await axios.get("http://localhost:6060/posts");
-  if (res.status === 200) {
-    return res.data;
-  } else {
-    return [];
-  }
-}
-export async function postPost(post: Post) {
-  await axios.post("http://localhost:6060/posts", post);
-}
+die: Die;
 ```
 
-Este nos permite pedir y mandar posts del servidor.
+También verás que cambió el constructor y `value`, y agregamos `dieForValue`:
+
+```typescript
+  constructor(sides: number = 6) {
+    let value: number = Math.floor(Math.random() * sides) + 1;
+    this.sides = sides;
+    this.die = this.dieForValue(value);
+  }
+
+  value(): number {
+    return this.die.value();
+  }
+  
+  private dieForValue(value: number): Die {
+    switch (value) {
+      case 1:
+        return new OneDie();
+      case 2:
+        return new TwoDie();
+      case 3:
+        return new ThreeDie();
+      case 4:
+        return new FourDie();
+      case 5:
+        return new FiveDie();
+      case 6:
+        return new SixDie();
+      default:
+        return new OneDie();
+    }
+  }
+```
+
 
 ## 🥅 Metas
 
-En esta lección, vamos a reemplazar las funciones del módulo `api` con genéricos.
+En esta lección, vamos a agregar una clase abstracta llamada `Die` y sus subclases:
+
+- OneDie
+- TwiDie
+- ThreeDie
+- FourDie
+- FiveDie
+- SixDie
 
 ## 🤸 Ejercicios
 
