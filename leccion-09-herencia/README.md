@@ -123,91 +123,14 @@ En esta lección, vamos a agregar una clase abstracta llamada `Die` y sus subcla
 
 ## 🤸 Ejercicios
 
-### 1. Renombrar funciones
+### 1. Declarar clase abstracta
 
-Si miramos en `./frontend/src/App.tsx`, podemos ver el nuevo uso esperado del `api`:
+En `./src/types/Dice.ts`, debajo de la clase `DiceWrapper`, agrega la clase abstracta `Die` con funcion abstracta `value` que retorna un `number`.
 
-```typescript
-import { getRequest, postRequest } from './utils/api';
+### 2. Las subclases de `Die`
 
-...
+Agrega las seis subclases que mencionamos antes, cada una con una implementacion de `value()` que retorna un valor correspondiente al numero.
 
-  async function fetchPosts() {
-    setPosts(await getRequest<Post>("posts"));
-  }
+### Credito extra
 
-  async function submitPost(post: Post) {
-    await postRequest<Post>(post, "posts");
-    fetchPosts();
-  }
-```
-
-Podemos ver que usamos, por ejemplo, `getRequest<Post>("posts")`, donde le pasamos lo que parece un endpoint como argumento.
-
-También tenemos `postRequest<Post>(post, "posts")`, que nos permite pasar el post y el mismo endpoint.
-
-En vez de tener `getPost` y `postPost` (con toda sinceridad, `postPost` no es el mejor nombre 😂), usemos estos nuevos variantes.
-
-En `./frontend/src/utils/api.ts`, cambiemos los nombres y firmas de las funciones:
-
-- `getPost` pasa a ser `getRequest` que es genérico `T` y acepta un argumento string `resourceURL`
-- `postPost` pasa a ser `postRequest` que es genérico `T` y acepta dos argumentos: un `data` tipo `T` y un string `resourceURL`
-
-Tambíen tendrás que modificar las funcones para que usen el `resourceURL`. 
-
-### 2. Integra el `Sender` en el `Post`
-
-Volvamos a `./src/types/Post.ts`, donde integraremos una propiedad `sender` que reemplazará `name` y `handle`.
-
-### Crédito extra: `axios` genérico
-
-Para hacer nuestras peticiones HTTP, usamos la librería `axios`. Esta también nos permite hacer `get` y `post` con `genéricos`. ¡Cambiémoslos!
-
-## 🤔 Reflexiones
-
-- ¿Podemos usar algo que no sea ni `T` ni `G` en nuestros genéricos?
-- ¿Qué tipos de retorno tienen las funciones de `api`?
-
-
-Objetivo: Usar clases abstractas y herencia.
-
-En `./src/models/Dice.ts`:
-
-```
-abstract class Die {
-  abstract value(): number;
-}
-
-class OneDie extends Die {
-  value() {
-    return 1;
-  }
-}
-class TwoDie extends Die {
-  value() {
-    return 2;
-  }
-}
-class ThreeDie extends Die {
-  value() {
-    return 3;
-  }
-}
-class FourDie extends Die {
-  value() {
-    return 4;
-  }
-}
-class FiveDie extends Die {
-  value() {
-    return 5;
-  }
-}
-class SixDie extends Die {
-  value() {
-    return 6;
-  }
-}
-```
-
-Credito extra: Agregar 7 y 8
+Agrega `SevenDie` y `EightDie`. Que nos falta para poder usarlos?
