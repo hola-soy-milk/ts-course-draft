@@ -125,12 +125,12 @@ En esta lección, vamos a agregar una clase abstracta llamada `Die` y sus subcla
 
 ### 1. Declarar clase abstracta
 
-En `./src/types/Dice.ts`, debajo de la clase `DiceWrapper`, agrega la clase abstracta `Die` con funcion abstracta `value` que retorna un `number`.
+En `./src/types/Dice.ts`, debajo de la clase `DiceWrapper`, agrega la clase abstracta `Die` con función abstracta `value` que retorna un `number`.
 
 ### 2. Las subclases de `Die`
 
-Agrega las seis subclases que mencionamos antes, cada una con una implementacion de `value()` que retorna un valor correspondiente al numero.
+Agrega las seis subclases que mencionamos antes, cada una con una implementación de `value()` que retorna un valor correspondiente al número.
 
 ### Credito extra
 
-Agrega `SevenDie` y `EightDie`. Que nos falta para poder usarlos?
+Agrega `SevenDie` y `EightDie`. ¿Qué nos falta para poder usarlos?
