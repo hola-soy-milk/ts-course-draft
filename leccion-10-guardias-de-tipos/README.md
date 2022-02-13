@@ -39,122 +39,87 @@ TypeScript nos permite declarar propiedades que posiblemente no existan al inici
 
 ```typescript
 class Persona {
-   nombre: string;
    edad?: number;
+   
+   constructor(public nombre: string) {}
 }
 ```
 
-Aquí podemos ver que la clase tiene una propiedad `nombre`, pero la de `edad` tiene un signo de interrogación. 
+Aquí podemos ver que la clase tiene una propiedad `nombre`, pero la de `edad` tiene un signo de interrogación. Esto quiere decir que es una propiedad opcional. Puede ser de tipo `number` o `undefined. O sea, si creamos una instancia de `Persona`, no requiere que se defina una edad. Por ejemplo:
 
-### Las clases son súpertipos
-
-Podemos extender nuestra clase `Animal`:
-
-```typescript
-class Perro extends Animal {
-  ladrar() {
-      console.log(`¡Guau guau!`);
-  }
-}
-
-class Pollito extends Animal {
-  twittear() {
-      console.log(`¡Pío pío!`);
-  }
-}
+```typescript 
+const humano: Persona = new Persona("Mirabel");
+humano.edad = 15;
+console.log(humano.edad < 100); // => Object is possibly 'undefined'.
 ```
 
-### Funciones abstractas
+Este error nos indica que tenemos que asegurarnos que `humano.edad` tenga un valor. 
 
-También podemos declarar funciones abstractas dentro de una clase abstracta, lo cual requirere que las subclases las implementen:
+### Guardias de tipos
+
+Volvamos a nuestro ejemplo de chequear que Mirabel tenga menos de 100 años de edad. Podemos usar una guardia de tipo, o sea che
+
+Bueno además permitirnos tener esa opcionalidad, también nos protegemos al usar estas propiedades:
 
 ```typescript
-abstract class Animal {
-  constructor(public nombre: string) {}
-  abstract comer(comida: string): void;
+if (humano.edad) {
+   console.log(humano.edad < 100); // => 15
 }
 ```
 
-¡Se ve bién! Sin embargo, crear una subclase que hereda de `Animal` nos muestra un nuevo error:
+Con esta, podemos tener por seguro que la edad se haya definido.
 
-`Non-abstract class 'Perro' does not implement inherited abstract member 'comer' from class 'Animal'`.
+### ¿Qué ha cambiado en esta lección?
 
-Esto quiere decir que tenemos que implementar esta función:
-
-```typescript
-class Perro extends Animal {
-  ladrar() {
-    console.log(`¡Guau guau!`);
-  }
-  comer(comida: string): void {
-    console.log(`¡Que rico comer ${comida}!`);
-  }
-}
-```
-
-## ¿Que ha cambiado en esta lección?
-
-¡Ha cambiado bastante el archivo `./src/types/Dice.ts`! En la línea 2, encontrarás una nueva propiedad:
+Lo principal se encuentra en `./src/types/Dice.ts` en la línea 2:
 
 ```typescript
-die: Die;
+die?: Die;
 ```
 
-También verás que cambió el constructor y `value`, y agregamos `dieForValue`:
+Si tratamos de construir la aplicación con el comando:
 
-```typescript
-  constructor(sides: number = 6) {
-    let value: number = Math.floor(Math.random() * sides) + 1;
-    this.sides = sides;
-    this.die = this.dieForValue(value);
-  }
+   $ npm run build
+   
+Veremos que falla con un error:
 
-  value(): number {
-    return this.die.value();
-  }
-  
-  private dieForValue(value: number): Die {
-    switch (value) {
-      case 1:
-        return new OneDie();
-      case 2:
-        return new TwoDie();
-      case 3:
-        return new ThreeDie();
-      case 4:
-        return new FourDie();
-      case 5:
-        return new FiveDie();
-      case 6:
-        return new SixDie();
-      default:
-        return new OneDie();
-    }
-  }
+```bash
+> dice-game@0.0.0 build
+> vue-tsc --noEmit && vite build
+
+src/types/Dice.ts:12:12 - error TS2532: Object is possibly 'undefined'.
+
+12     return this.die.value();
+              ~~~~~~~~
+
+
+Found 1 error.
 ```
-
 
 ## 🥅 Metas
 
-En esta lección, vamos a agregar una clase abstracta llamada `Die` y sus subclases:
-
-- OneDie
-- TwiDie
-- ThreeDie
-- FourDie
-- FiveDie
-- SixDie
+En esta lección, vamos a arreglar nuestra aplicación usando una guardia de tipo.
 
 ## 🤸 Ejercicios
 
-### 1. Declarar clase abstracta
+### 1. ¿Qué pasa si no hay lado de dado?
 
-En `./src/types/Dice.ts`, debajo de la clase `DiceWrapper`, agrega la clase abstracta `Die` con función abstracta `value` que retorna un `number`.
+En el caso donde `die` sea undefined, lanzemos un error que diga "Imposible no tener lado de dado". Lanzar un error es igual que en JavaScript:
 
-### 2. Las subclases de `Die`
-
-Agrega las seis subclases que mencionamos antes, cada una con una implementación de `value()` que retorna un valor correspondiente al número.
+```typescript
+throw new Error(message);
+```
 
 ### Credito extra
 
-Agrega `SevenDie` y `EightDie`. ¿Qué nos falta para poder usarlos?
+¡Pongámos nuestra nueva propiedad opcional en práctica!
+
+Cambiemos la firma de nuestra función `dieForValue` en la línea 15:
+
+```typescript
+  private dieForValue(value: number): Die | undefined {
+```
+
+El valor de retorno de `dieForValue` ahora puede ser de tipo `Die` o `undefined`. Esto se llama un **tipo unión**.
+
+Ahora podemos cambiarlo a que el `switch` por defecto retorne un `undefined`.
