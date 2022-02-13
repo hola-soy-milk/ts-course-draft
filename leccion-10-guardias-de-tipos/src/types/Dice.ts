@@ -12,7 +12,7 @@ export default class DieWrapper {
     return this.die.value();
   }
 
-  private dieForValue(value: number): Die | undefined {
+  private dieForValue(value: number): Die {
     switch (value) {
       case 1:
         return new OneDie();
