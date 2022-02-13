@@ -26,8 +26,6 @@ export default class DieWrapper {
         return new FiveDie();
       case 6:
         return new SixDie();
-      default:
-        return new OneDie();
     }
   }
 }
