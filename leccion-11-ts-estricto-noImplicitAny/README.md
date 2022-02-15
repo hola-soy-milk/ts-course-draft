@@ -1,3 +1,16 @@
+# Unidad 3, Lección 11: TypeScript Estricto: `noImplicitany`
+
+¡Felicidades! Has terminado la segunda unidad de TypeScript IRL. Ahora verémos la tercera:
+
+## Unidad 3: De una buena a una gran base de código TypeScript
+
+Nuestra última aplicación será de comercio electrónico. ¡Una tienda de dulces! Ya está desarrollada, y puedes agregar dulces al carrito:
+
+![Cáptura de pantalla de la tienda de dulces con chocolates, caramelos y mazapán disponible](https://user-images.githubusercontent.com/656318/154029420-aad5b015-cd28-483d-944f-b84eba885fe1.png)
+
+## 🐾 Primeros Pasos
+
+
 Objetivo: Resolver el error "no implicit any's allowed"
 
 Verificar: 
