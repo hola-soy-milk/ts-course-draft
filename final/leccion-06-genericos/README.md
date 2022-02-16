@@ -99,7 +99,7 @@ Objetivo: Comenzar a usar tipos genericos.
 En `./src/utils/api.ts`:
 
 ```
--import Post from "../models/Post";
+-import Post from "../types/Post";
 
 -export async function getPosts() {
 -  const res = await axios.get("http://localhost:6060/posts");

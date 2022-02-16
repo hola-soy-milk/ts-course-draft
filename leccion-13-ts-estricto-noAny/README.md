@@ -32,18 +32,18 @@ En `./src/components/Cart.svelte`:
 En `./src/components/Menu.svelte`:
 
 ```
--  import {availableMarshmallows} from '../models/Marshmallow';
+-  import {availableMarshmallows} from '../types/Marshmallow';
 -  export let addCartItem: any;
-+  import {availableMarshmallows, Marshmallow} from '../models/Marshmallow';
++  import {availableMarshmallows, Marshmallow} from '../types/Marshmallow';
 +  export let addCartItem: (item: Marshmallow) => void;
 ```
 
 En `./src/models/Marshmallow.ts`:
 
 ```
--  import {availableMarshmallows} from '../models/Marshmallow';
+-  import {availableMarshmallows} from '../types/Marshmallow';
 -  export let addCartItem: any;
-+  import {availableMarshmallows, Marshmallow} from '../models/Marshmallow';
++  import {availableMarshmallows, Marshmallow} from '../types/Marshmallow';
 +  export let addCartItem: (item: Marshmallow) => void;
 ```
 
