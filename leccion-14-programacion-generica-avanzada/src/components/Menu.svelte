@@ -1,9 +1,9 @@
 <script lang="ts">
-  import {availableMarshmallows, Marshmallow} from '../types/Marshmallow';
-  export let addCartItem: (item: Marshmallow) => void;
+  import {availableCandies, Candy} from '../types/Candy';
+  export let addCartItem: (item: Candy) => void;
 </script>
 
-{#each availableMarshmallows as marshmallow}
+{#each availableCandies as marshmallow}
     <button on:click={(_e) => addCartItem(marshmallow)}>
         {marshmallow.name()}<br>${marshmallow.priceCents() / 100.0}
     </button>

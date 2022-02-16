@@ -1,4 +1,4 @@
-import type { Marshmallow } from "./Marshmallow";
+import type { Candy } from "./Candy";
 
 export interface GroupedCartItem {
     name: string,
@@ -7,13 +7,13 @@ export interface GroupedCartItem {
 }
 
 export class ShoppingCart {
-    items?: Marshmallow[];
+    items?: Candy[];
 
     constructor() {
         this.items = [];
     }
 
-    addItem(item: Marshmallow) {
+    addItem(item: Candy) {
         if (this.items !== undefined) {
             this.items = [...this.items, item]
         }
@@ -22,7 +22,7 @@ export class ShoppingCart {
 
     groupedItems() {
         if (this.items) {
-            return this.items.reduce((cartItems: GroupedCartItem[], item: Marshmallow) => {
+            return this.items.reduce((cartItems: GroupedCartItem[], item: Candy) => {
                 let cartItem: GroupedCartItem | undefined = cartItems.find(e => e.name === item.name());
                 if (!cartItem) {
                     cartItem = {

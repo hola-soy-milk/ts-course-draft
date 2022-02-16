@@ -46,7 +46,7 @@ En `./src/components/Menu.svelte`:
 +  export let addCartItem: any;
 ```
 
-En `./src/models/Marshmallow.ts`:
+En `./src/models/Candy.ts`:
 
 ```
 -    abstract priceCents();

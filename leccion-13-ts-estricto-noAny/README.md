@@ -13,7 +13,7 @@ En `./src/App.svelte`:
 ```
  <script lang="ts">
 -       const addCartItem = (item: any) => {
-+       const addCartItem = (item: Marshmallow) => {
++       const addCartItem = (item: Candy) => {
                 cart = cart.addItem(item);
         }
 ```
@@ -32,19 +32,19 @@ En `./src/components/Cart.svelte`:
 En `./src/components/Menu.svelte`:
 
 ```
--  import {availableMarshmallows} from '../types/Marshmallow';
+-  import {availableCandies} from '../types/Candy';
 -  export let addCartItem: any;
-+  import {availableMarshmallows, Marshmallow} from '../types/Marshmallow';
-+  export let addCartItem: (item: Marshmallow) => void;
++  import {availableCandies, Candy} from '../types/Candy';
++  export let addCartItem: (item: Candy) => void;
 ```
 
-En `./src/models/Marshmallow.ts`:
+En `./src/models/Candy.ts`:
 
 ```
--  import {availableMarshmallows} from '../types/Marshmallow';
+-  import {availableCandies} from '../types/Candy';
 -  export let addCartItem: any;
-+  import {availableMarshmallows, Marshmallow} from '../types/Marshmallow';
-+  export let addCartItem: (item: Marshmallow) => void;
++  import {availableCandies, Candy} from '../types/Candy';
++  export let addCartItem: (item: Candy) => void;
 ```
 
 En `./src/models/ShoppingCart.ts`:
@@ -52,7 +52,7 @@ En `./src/models/ShoppingCart.ts`:
 ```
 -export default class ShoppingCart {
 -    items?: any[];
-+import type { Marshmallow } from "./Marshmallow";
++import type { Candy } from "./Candy";
 +
 +export interface GroupedCartItem {
 +    name: string,
@@ -61,14 +61,14 @@ En `./src/models/ShoppingCart.ts`:
 +}
 +
 +export class ShoppingCart {
-+    items?: Marshmallow[];
++    items?: Candy[];
 
      constructor() {
          this.items = [];
      }
 
 -    addItem(item: any) {
-+    addItem(item: Marshmallow) {
++    addItem(item: Candy) {
          if (this.items !== undefined) {
              this.items = [...this.items, item]
          }
@@ -85,7 +85,7 @@ En `./src/models/ShoppingCart.ts`:
 -                cartItem[item.name()].priceCents += item.priceCents();
 -                return cartItem;
 -            }, {}));
-+            return this.items.reduce((cartItems: GroupedCartItem[], item: Marshmallow) => {
++            return this.items.reduce((cartItems: GroupedCartItem[], item: Candy) => {
 +                let cartItem: GroupedCartItem | undefined = cartItems.find(e => e.name === item.name());
 +                if (!cartItem) {
 +                    cartItem = {
@@ -105,10 +105,10 @@ En `./src/models/__tests__/ShoppingCart.test.ts`:
 
 ```
 -import ShoppingCart from '../ShoppingCart'
-+import { Marshmallow } from '../Marshmallow';
++import { Candy } from '../Candy';
 +import { ShoppingCart } from '../ShoppingCart'
 +
-+class Big extends Marshmallow {
++class Big extends Candy {
 +    priceCents() {
 +        return 999;
 +    }
@@ -123,10 +123,10 @@ En `./src/models/__tests__/ShoppingCart.test.ts`:
 -  expect(updatedCart.items).toEqual([{
 -    data: "value"
 -  }]);
-+  const bigMarshmallow = new Big()
-+  const updatedCart = cart.addItem(bigMarshmallow);
-+  expect(Object.getPrototypeOf(updatedCart.items![0].constructor).name).toEqual(Marshmallow.name);
-+  expect(updatedCart.items).toEqual([bigMarshmallow]);
++  const bigCandy = new Big()
++  const updatedCart = cart.addItem(bigCandy);
++  expect(Object.getPrototypeOf(updatedCart.items![0].constructor).name).toEqual(Candy.name);
++  expect(updatedCart.items).toEqual([bigCandy]);
 ```
 
 ```

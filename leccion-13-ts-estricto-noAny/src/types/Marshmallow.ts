@@ -1,9 +1,9 @@
-export abstract class Marshmallow {
+export abstract class Candy {
     abstract priceCents(): any;
     abstract name(): any;
 }
 
-class Fluffy extends Marshmallow {
+class Fluffy extends Candy {
     priceCents() {
         return 99;
     }
@@ -12,7 +12,7 @@ class Fluffy extends Marshmallow {
     }
 }
 
-class NotSoFluffy extends Marshmallow {
+class NotSoFluffy extends Candy {
     priceCents() {
         return 199;
     }
@@ -21,7 +21,7 @@ class NotSoFluffy extends Marshmallow {
     }
 }
 
-class ExtraFluffy extends Marshmallow {
+class ExtraFluffy extends Candy {
     priceCents() {
         return 499;
     }
@@ -30,7 +30,7 @@ class ExtraFluffy extends Marshmallow {
     }
 }
 
-export const availableMarshmallows = [
+export const availableCandies = [
     new Fluffy(),
     new NotSoFluffy(),
     new ExtraFluffy()

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Cart from './components/Cart.svelte';
 	import Menu from './components/Menu.svelte'
-	import type { Marshmallow } from './types/Marshmallow';
+	import type { Candy } from './types/Candy';
 	import { ShoppingCart } from './types/ShoppingCart'
 	let cart = new ShoppingCart;
 
@@ -11,7 +11,7 @@
   </script>
   
   <main>
-	<h1>Marshmallow shop!</h1>
+	<h1>Tienda de dulces!</h1>
   
 	<Menu addCartItem={addCartItem}/>
 	<Cart items={cart.groupedItems()} amount={cart.numberOfItems()} total={cart.total()} />
