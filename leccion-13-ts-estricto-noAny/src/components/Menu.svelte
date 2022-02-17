@@ -3,11 +3,13 @@
   export let addCartItem: any;
 </script>
 
+<div class="flex">
 {#each availableCandies as marshmallow}
     <button on:click={(_e) => addCartItem(marshmallow)}>
         {marshmallow.name()}<br>${marshmallow.priceCents() / 100.0}
     </button>
 {/each}
+</div>
 
 <style>
   .flex {

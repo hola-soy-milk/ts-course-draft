@@ -3,35 +3,35 @@ export abstract class Candy {
     abstract name(): string;
 }
 
-class Fluffy extends Candy {
+class Chocolate extends Candy {
     priceCents() {
         return 99;
     }
     name() {
-        return "Fluffy";
+        return "Chocolate";
     }
 }
 
-class NotSoFluffy extends Candy {
+class NotSoChocolate extends Candy {
     priceCents() {
         return 199;
     }
     name() {
-        return "Not So Fluffy";
+        return "Caramelo";
     }
 }
 
-class ExtraFluffy extends Candy {
+class ExtraChocolate extends Candy {
     priceCents() {
         return 499;
     }
     name() {
-        return "Extra Fluffy";
+        return "Mazapán";
     }
 }
 
 export const availableCandies = [
-    new Fluffy(),
-    new NotSoFluffy(),
-    new ExtraFluffy()
+    new Chocolate(),
+    new NotSoChocolate(),
+    new ExtraChocolate()
 ]
