@@ -68,6 +68,22 @@ Activar estos modos en tu aplicación causará que la compilación te avise si c
 
 En esta unidad, vamos a activar un par de estas reglas e ir arreglando el código en ese ritmo.
 
+### `noImplicitAny`
+
+Esta regla no permite tener inferencia de tipos. Por ejemplo:
+
+```typescript
+const porDos = (numero) => numero * 2;
+
+console.log(porDos(4));
+```
+
+Este código no se compilará con el error:
+
+```bash
+Parameter 'numero' implicitly has an 'any' type.
+```
+
 ## 🥅 Metas
 
 En esta lección, tenemos activada la regla `noImplicitAny`. 
