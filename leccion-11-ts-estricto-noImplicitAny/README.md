@@ -68,12 +68,6 @@ Activar estos modos en tu aplicación causará que la compilación te avise si c
 
 En esta unidad, vamos a activar un par de estas reglas e ir arreglando el código en ese ritmo.
 
-### ¿Pero por qué hacer esto, que tiene de conveniente?
-
-A medida que iremos activando estas reglas, veremos que el código se irá mejorando en el sentido de seguridad de tipos y legibilidad del código. 
-
-Iremos encontrando problemitas con lo que tenemos en la base corriente y eliminándolos con los modos estrictos.
-
 ## 🥅 Metas
 
 En esta lección, tenemos activada la regla `noImplicitAny`. 
@@ -152,6 +146,8 @@ Correr `npm run lint` nos presenta:
 > eslint . --ext .ts
 ```
 
+Ah, bueno! Se ve bién.
+
 ### 4. Arreglar el check
 
 Correr `npm run check` nos presenta:
@@ -169,3 +165,13 @@ Getting Svelte diagnostics...
 ====================================
 svelte-check found 0 errors, 0 warnings, and 0 hints
 ```
+
+¡Ah, ya! También funciona.
+
+## 🤔 Reflecciones
+
+### ¿Pero por qué hacer esto, que tiene de conveniente?
+
+A medida que iremos activando estas reglas, veremos que el código se irá mejorando en el sentido de seguridad de tipos y legibilidad del código. 
+
+Iremos encontrando problemitas con lo que tenemos en la base corriente y eliminándolos con los modos estrictos.
