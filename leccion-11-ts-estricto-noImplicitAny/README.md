@@ -86,7 +86,7 @@ Parameter 'numero' implicitly has an 'any' type.
 
 ## 🥅 Metas
 
-En esta lección, tenemos activada la regla `noImplicitAny`. 
+En esta lección, vamos a mejorar nuestro código con la regla `noImplicitAny`. 
 
 ## 🤸 Ejercicios
 
