@@ -9,38 +9,89 @@
 Esta regla no permite tener inferencia de tipos. Por ejemplo:
 
 ```typescript
-const porDos = (numero) => numero * 2;
-
-console.log(porDos(4));
+const animales = [
+  { nombre: "Odie" },
+  { nombre: "Garfield" },
+];
+ 
+const perrito = animales.find((animal: any) => animal.nombre === "Odie");
+console.log(perrito.nombre);
 ```
 
 Este código no se compilará con el error:
 
 ```bash
-Parameter 'numero' implicitly has an 'any' type.
+const perrito: {
+    nombre: string;
+} | undefined
+Object is possibly 'undefined'
 ```
 
-## 🥅 Metas
+En este caso, vemos que el tipo de `perrito` es un tipo unión: `{ nombre: string } | undefined`.
 
-En esta lección vamos a modificar nuestra clase `DieWrapper` para que acepte una cantidad de lados `sides` y lo ultilice para el máximo valor de tirarlo.
+Sin la regla activada, TypeScript ignorará el `undefined`.
 
-## 🤸 Ejercicios
+### ¿Qué hacer al respecto?
 
-### 1. La propiedad `sides`
+Hemos trabajado antes con esta situación. Quizás ya tengas la solución en mente: ¡Guardias de tipos!
 
-Una clase puede tener propiedades tal como en JavaScript:
+Arreglemos nuestro código:
+
 
 ```typescript
-class Perro {
-   nombre: string;
-   
-   constructor(nombre: string) {
-      this.nombre = nombre;
-   }
+const animales = [
+  { nombre: "Odie" },
+  { nombre: "Garfield" },
+];
+ 
+const perrito = animales.find((animal: any) => animal.nombre === "Odie");
+if (perrito) {
+   console.log(perrito.nombre);
 }
 ```
 
-Agreguémosle una propiedad a `DiceWrapper` llamada `sides` que será del tipo `number`.
+Ahora funciona sin problema.
+
+## 🥅 Metas
+
+En esta lección, vamos a mejorar nuestro código con la regla `strictNullChecks`.
+
+## 🤸 Ejercicios
+
+### 1. Arreglar las pruebas
+
+Echar a andar `npm run test` nos entrega:
+
+```bash
+
+> svelte-app@1.0.0 test
+> jest src
+
+ PASS  src/types/__tests__/Candy.test.ts
+ FAIL  src/types/__tests__/ShoppingCart.test.ts
+  ● Test suite failed to run
+
+    src/types/ShoppingCart.ts:16:30 - error TS2532: Object is possibly 'undefined'.
+
+    16         return Object.values(this.items.reduce((cartItem, item) => {
+                                    ~~~~~~~~~~
+    src/types/ShoppingCart.ts:29:16 - error TS2532: Object is possibly 'undefined'.
+
+    29         return this.items.length;
+                      ~~~~~~~~~~
+    src/types/ShoppingCart.ts:33:16 - error TS2532: Object is possibly 'undefined'.
+
+    33         return this.items.reduce((x, y) => x + y.priceCents(), 0);
+                      ~~~~~~~~~~
+
+Test Suites: 1 failed, 1 passed, 2 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        3.23 s
+Ran all test suites matching /src/i
+```
+
+Todas las fallas estan situadas en `./src/types/ShoppingCart.ts`. Arreglémoslas con 
 
 ### 2. Adaptar la función `value`
 
