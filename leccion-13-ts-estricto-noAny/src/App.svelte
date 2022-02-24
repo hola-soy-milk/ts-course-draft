@@ -5,7 +5,7 @@
   import { ShoppingCart } from "./types/ShoppingCart";
   let cart = new ShoppingCart();
 
-  const addCartItem = (item: any) => {
+  const addCartItem = (item: Candy) => {
     cart = cart.addItem(item);
   };
 </script>

@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { availableCandies } from "../types/Candy";
-  export let addCartItem: any;
+  import { availableCandies, Candy } from "../types/Candy";
+  export let addCartItem: (candy: Candy) => void;
 </script>
 
 <div class="flex">
