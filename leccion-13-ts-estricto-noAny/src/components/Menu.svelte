@@ -1,14 +1,14 @@
 <script lang="ts">
-  import {availableCandies} from '../types/Candy';
+  import { availableCandies } from "../types/Candy";
   export let addCartItem: any;
 </script>
 
 <div class="flex">
-{#each availableCandies as marshmallow}
+  {#each availableCandies as marshmallow}
     <button on:click={(_e) => addCartItem(marshmallow)}>
-        {marshmallow.name()}<br>${marshmallow.priceCents() / 100.0}
+      {marshmallow.name()}<br />${marshmallow.priceCents() / 100.0}
     </button>
-{/each}
+  {/each}
 </div>
 
 <style>
