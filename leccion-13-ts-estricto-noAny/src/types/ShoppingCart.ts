@@ -1,7 +1,7 @@
 export interface GroupedCartItem {
-  name: string;
-  priceCents: number;
-  quantity: number;
+  name: any;
+  priceCents: any;
+  quantity: any;
 }
 
 export class ShoppingCart {
@@ -18,23 +18,26 @@ export class ShoppingCart {
     return this;
   }
 
-  groupedItems() {
-    if (this.items) {
-      return Object.values(
-        this.items.reduce((cartItem, item) => {
-          cartItem[item.name()] = cartItem[item.name()] || {
-            name: item.name(),
-            quantity: 0,
-            priceCents: item.priceCents(),
-          };
-          cartItem[item.name()].quantity += 1;
-          cartItem[item.name()].priceCents += item.priceCents();
-          return cartItem;
-        }, {})
-      );
-    } else {
+  groupedItems(): any[] {
+    if (!this.items) {
       return [];
     }
+    return this.items.reduce((cartItems: any[], item: any) => {
+      let cartItem: any = cartItems.find(
+        (elem) => elem.name === item.name()
+      );
+      if (!cartItem) {
+        cartItem = {
+          name: item.name(),
+          priceCents: item.priceCents(),
+          quantity: 0,
+        };
+        cartItems.push(cartItem);
+      }
+      cartItem.quantity += 1;
+      cartItem.priceCents += item.priceCents();
+      return cartItems;
+    }, []);
   }
 
   numberOfItems() {
